@@ -17,16 +17,26 @@ const Login_ = (props) => {
 
 
   return (
-    <div className="flex w-full flex-wrap">
+    <div className="flex  justify-center w-full h-screen flex-wrap">
       {/* <!-- Login Section --> */}
       <div className="w-full absolute">
       <div className=" bg-main-bg bg-cover bg-no-repeat bg-zinc-900 h-screen flex w-full text-white flex-col ">
-        <div className="flex mt-20 justify-center pt-12 md:-mb-24 md:justify-start md:pl-12">
-          <img src={logo} alt="" className="h-[240px] mx-auto pr-12" />
+        <div className="flex flex-col items-center  mt-20 justify-center pt-12 md:-mb-24 md:justify-start md:pl-12 w-full">
+ 
+          <div>
+          <img src={logo} alt="" className="h-[240px] mx-auto " />
+          </div>
+          {/* <img src={logo} alt="" className='w-40' /> */}
+          <br />
+          <div className="w-full flex items-center justify-center">
+            <h2 className='heading font-bold text-white center text-7xl mt-4'>EstateX</h2>
+            <br />
+            <br /> <br />
+            </div>
         </div>
 
-        <div className="my-auto flex flex-col justify-center px-8 md:justify-start md:px-24 md:pt-0 lg:px-32 w-full items-center text-center">
-          <p className="text-3xl">Finding Props made</p>
+        <div className="my-auto flex flex-col justify-center   md:px-24 md:pt-0 lg:px-32 w-full items-center text-center">
+          <p className="  text-3xl left-3 mt-10">Finding Props is now</p>
           <p className="text-sm text-gray-300 mt-2">
             Easy &nbsp; &nbsp; • &nbsp; &nbsp; Transparent &nbsp; &nbsp; •
             &nbsp; &nbsp; Verified{" "}
