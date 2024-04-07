@@ -1,122 +1,202 @@
 const ABI = [
     {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
     },
     {
-        "inputs": [
+      "inputs": [],
+      "name": "Domake",
+      "outputs": [
+        {
+          "components": [
             {
-                "internalType": "string",
-                "name": "name",
-                "type": "string"
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
             },
             {
-                "internalType": "string",
-                "name": "mobile",
-                "type": "string"
+              "internalType": "string",
+              "name": "Address",
+              "type": "string"
             },
             {
-                "internalType": "string",
-                "name": "email",
-                "type": "string"
+              "internalType": "uint256",
+              "name": "Number",
+              "type": "uint256"
             },
             {
-                "internalType": "string",
-                "name": "governmentID",
-                "type": "string"
+              "internalType": "uint256",
+              "name": "Price",
+              "type": "uint256"
             },
             {
-                "internalType": "string",
-                "name": "about",
-                "type": "string"
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
             },
             {
-                "internalType": "string",
-                "name": "image",
-                "type": "string"
+              "internalType": "string",
+              "name": "Description",
+              "type": "string"
             },
             {
-                "internalType": "string",
-                "name": "propertyAddress",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "city",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "state",
-                "type": "string"
+              "internalType": "string",
+              "name": "Type",
+              "type": "string"
             }
-        ],
-        "name": "AddProperty",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
+          ],
+          "internalType": "struct Lock.Data[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
-        "inputs": [],
-        "name": "getData",
-        "outputs": [
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "Address",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "Number",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "Price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "Description",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "Type",
+          "type": "string"
+        }
+      ],
+      "name": "ListProp",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getData",
+      "outputs": [
+        {
+          "components": [
             {
-                "components": [
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "mobile",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "email",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "governmentID",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "about",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "image",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "propertyAddress",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "city",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "state",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct Properties.Owner[]",
-                "name": "",
-                "type": "tuple[]"
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Address",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "Number",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "Price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Description",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Type",
+              "type": "string"
             }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+          ],
+          "internalType": "struct Lock.Data[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "make",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Address",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "Number",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "Price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "email",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Description",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "Type",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct Lock.Data[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
-];
-
-export default ABI;
+  ]
+  
+  export default ABI;

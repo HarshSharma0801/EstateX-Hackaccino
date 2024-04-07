@@ -1,5 +1,5 @@
 import SidePanel from "./Sidepanel";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
 import axios from "axios";
 import dataSet from "./constants";
 import { Link } from "react-router-dom";
@@ -14,24 +14,30 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 
-const DisplayCard = () => {
-  // useEffect(()=>{
-  //     axios.get('Backend').then(res=>{
-  //        SetData(res.data)
-  //     },[])
+const DisplayCard = ({state}) => {
+  const [memos,setMemos]=useState([]);
 
-  // },[])
+
+  useEffect(()=>{
+      const memosMessage = async()=>{
+        console.log(state.contract.address)
+        const memos = await state?.contract?.getData();
+        console.log(memos)
+        setMemos(memos)
+        
+      }
+      state.contract && memosMessage()
+  },[])
 
   return (
     <>
       <div className="flex gap-20">
         <SidePanel />
-        <div className="grid mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-          {dataSet.map((data) => {
-            return (
-              <Card className="w-full max-w-[26rem] shadow-lg mt-5 h-fit pb-5 min-h-[615px]">
+       {memos.length > 0 && memos.map((data,index)=>{
+        return <>
+          <Card className="w-full max-w-[26rem] shadow-lg mt-5 h-fit pb-5 min-h-[615px]">
                 <CardHeader floated={false} color="blue-gray">
-                  <img src={data.image[0]} alt="Image" className="h-80"/>
+                  <img src="https://i.postimg.cc/jdkKmrDv/image.png" alt="Image" className="h-80"/>
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
                   <IconButton
                     size="sm"
@@ -56,7 +62,7 @@ const DisplayCard = () => {
                       color="blue-gray"
                       className="font-medium"
                     >
-                      {data.title}
+                      {data[0]}
                     </Typography>
                     {/* <Typography
                     color="blue-gray"
@@ -82,7 +88,7 @@ const DisplayCard = () => {
                 </Typography> */}
                   <Typography color="gray">
                     <p class="mt-2 text-lg text-gray-800 line-clamp-1 truncate">
-                      {data.address}
+                      {data[1]}
                     </p>
                   </Typography>
                   <Typography
@@ -90,12 +96,12 @@ const DisplayCard = () => {
                     className="inline-block font-semibold text-primary whitespace-nowrap leading-tight rounded-xl mt-5"
                   >
                     <span class="text-md mr-1 uppercase">₹</span>
-                    <span class="text-lg">{data.price}</span>/sq ft
+                    // <span class="text-lg">{parseInt(data[3]._hex, 16)}</span>/sq ft
                   </Typography>
                 </CardBody>
                 <CardFooter className="pt-3 px-5 align-bottom mt-auto">
                   <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
-                    <Tooltip content={data.landType}>
+                    <Tooltip content={data[6]}>
                       <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                         <svg
                           width="24"
@@ -164,7 +170,7 @@ const DisplayCard = () => {
                       </span>
                     </Tooltip>
                     <Tooltip
-                      content={data.documentsData.propertyData.size + " sq ft"}
+                      content={"5000" + " sq ft"}
                     >
                       <span className="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">
                         <svg
@@ -261,13 +267,15 @@ const DisplayCard = () => {
                     </Tooltip>
                   </div>
                   <Button className="p-4 mt-5" fullWidth={true}>
-                    <Link to={`/property/${data.id}`}>View More</Link>
+                    <Link to={`/property/${index}`}>View More</Link>
                   </Button>
                 </CardFooter>
               </Card>
-            );
-          })}
-        </div>
+        </>
+       })
+      
+
+       }
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Header from "../Home/Header";
 import dataSet from "../Home/constants";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 import { Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -9,41 +9,15 @@ import Navbar from "../Navbar/Navbar";
 
 const SinglePage = () => {
   const { id } = useParams();
-  const [Data, SetData] = useState();
   const [Count, SetCount] = useState(0);
   const [Coord, SetCoord] = useState();
 
-  useEffect(() => {
-    SetData(dataSet[id]);
-    dataSet[id].image.map((img) => {
-      console.log(img);
-    });
-    console.log("Data", dataSet[id]);
-  }, [id]);
 
   useEffect(() => {
-    SetCoord([
-      dataSet[id].coordinates.latitude,
-      dataSet[id].coordinates.longitude,
-    ]);
+    SetCoord([12.9716, 77.5946]);
   }, [id]);
 
-  const nextimage = () => {
-    if (Data && Count != Data.image.length - 1) {
-      SetCount((prev) => {
-        return prev + 1;
-      });
-    }
-  };
-  const previmage = () => {
-    if (Data && Count != 0) {
-      SetCount((prev) => {
-        return prev - 1;
-      });
-    }
-  };
-  const blackOptions = { color: "black" };
-  const coord = [12.9716, 77.5946];
+
 
   const Map = () => {
     return <></>;
@@ -63,6 +37,41 @@ const SinglePage = () => {
         return "text-gray-900 bg-gray-200";
     }
   }
+const Mdocs = [
+  { name: "Deed", status: "Approved" },
+  { name: "Channel Document", status: "Approved" },
+  { name: "Encurbrance Certificate", status: "Approved" },
+  { name: "Occupancy Certificate", status: "Approved" },
+  { name: "Allotment", status: "Approved" },
+  { name: "Tax Reciept", status: "Approved" },
+  { name: "Parking Allotment", status: "Approved" },
+  { name: "NOC", status: "Approved" },
+] 
+
+
+const mdata =  {
+  propertyType: "Flat",
+  channel: [
+    { ownerNum: 1, ownerName: "Rajveer" },
+    { ownerNum: 2, ownerName: "Satyam" },
+    { ownerNum: 3, ownerName: "Harish Kushwaha" },
+  ],
+  loanAmount: 0,
+  isFlat: "Yes",
+  propertyData: {
+    complaincesFollowed: "Yes",
+    parkingAlloted: "No",
+    towerNumber: "1C",
+    flatNumber: 324,
+    size: 600,
+    noOfRooms: 2,
+    bathroomAttached: "Yes",
+    kitchenProvided: "Yes",
+    isFurnished: "Yes",
+  },
+  isNoObjection: "Yes",
+  societyMaintenanceAmountPending: 0,
+}
 
   return (
     <>
@@ -77,7 +86,7 @@ const SinglePage = () => {
                     <div class="relative mb-6 lg:mb-10 lg:h-96 justify-center">
                       <a
                         class="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2 drop-shadow-2xl shadow-lg"
-                        onClick={previmage}
+                        
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -95,12 +104,11 @@ const SinglePage = () => {
                       </a>
                       <img
                         class="object-contain w-full lg:h-full"
-                        src={Data && Data.image[Count]}
+                        src="https://i.postimg.cc/jdkKmrDv/image.png"
                         alt=""
                       />
                       <a
                         class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2"
-                        onClick={nextimage}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -118,21 +126,19 @@ const SinglePage = () => {
                       </a>
                     </div>
                     <div class="flex-wrap hidden -mx-2 md:flex justify-center">
-                      {Data &&
-                        Data.image.map((img) => (
-                          <div className="w-1/2 p-2 sm:w-1/4" key={img}>
+                          <div className="w-1/2 p-2 sm:w-1/4">
                             <a
                               className="block border border-gray-200 hover:border-blue-400 dark:border-gray-700 dark:hover:border-blue-300"
                               href="#"
                             >
                               <img
                                 className="object-contain w-full lg:h-28"
-                                src={img}
+                                src="https://i.postimg.cc/jdkKmrDv/image.png"
                                 alt=""
                               />
                             </a>
                           </div>
-                        ))}
+                       
                     </div>
                   </div>
                 </div>
@@ -140,7 +146,7 @@ const SinglePage = () => {
                   <div class="lg:pl-20">
                     <div class="mb-6 ">
                       <h2 class="max-w-xl mt-6 text-2xl font-semibold leading-loose tracking-wide text-black">
-                        {Data && Data.title}
+                        { "sample address"}
                       </h2>
                       <p>
                         <span class="inline-flex items-center px-3 py-1 bg-green-200 hover:bg-green-300 text-xs rounded-full font-semibold text-green-600 mb-6">
@@ -148,7 +154,7 @@ const SinglePage = () => {
                         </span>
                       </p>
                       <p class="inline-block text-xl font-semibold text-black">
-                        <span>Rs. {Data.price}</span>
+                        <span>Rs. sample price </span>
                       </p>
                     </div>
                     <div class="mb-6">
@@ -212,7 +218,7 @@ const SinglePage = () => {
                                       Address
                                     </p>
                                     <h2 class="text-base font-semibold text-gray-800">
-                                      {Data && Data.address}
+                                      { "sample address"}
                                     </h2>
                                   </div>
                                 </div>
@@ -277,14 +283,7 @@ const SinglePage = () => {
                                       />
                                     </svg>
                                   </span>
-                                  <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-800">
-                                      City
-                                    </p>
-                                    <h2 class="text-base font-semibold text-gray-800">
-                                      {Data && Data.city}
-                                    </h2>
-                                  </div>
+                                
                                 </div>
                               </div>
                               {/*  */}
@@ -347,14 +346,7 @@ const SinglePage = () => {
                                       />
                                     </svg>
                                   </span>
-                                  <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-800">
-                                      State
-                                    </p>
-                                    <h2 class="text-base font-semibold text-gray-800">
-                                      {Data && Data.state}
-                                    </h2>
-                                  </div>
+                                 
                                 </div>
                               </div>
                               {/*  */}
@@ -391,14 +383,7 @@ const SinglePage = () => {
                                       />
                                     </svg>
                                   </span>
-                                  <div>
-                                    <p class="mb-2 text-sm font-medium text-gray-800">
-                                      Pincode
-                                    </p>
-                                    <h2 class="text-base font-semibold text-gray-800">
-                                      {Data && Data.pincode}
-                                    </h2>
-                                  </div>
+
                                 </div>
                               </div>
                               {/*  */}
@@ -412,7 +397,7 @@ const SinglePage = () => {
                         Description
                         <br />
                         <span class="text-gray-800 font-thin">
-                          {Data && Data.about}
+                          { "sample des"}
                         </span>
                       </p>
                       <p class="mt-10 text-md text-black font-bold">
@@ -459,9 +444,7 @@ const SinglePage = () => {
                                 Name
                               </p>
                               <h2 class="text-base font-semibold text-gray-800">
-                                {Data && Data.owner.name && Data.owner.name
-                                  ? Data.owner.name
-                                  : "Null"}
+                                "owner name"
                               </h2>
                             </div>
                           </div>
@@ -490,9 +473,7 @@ const SinglePage = () => {
                                 Number
                               </p>
                               <h2 class="text-base font-semibold text-gray-800">
-                                {Data && Data.owner.mobile && Data.owner.mobile
-                                  ? Data.owner.mobile
-                                  : "Null"}
+                                { "sample"}
                               </h2>
                             </div>
                           </div>
@@ -541,9 +522,7 @@ const SinglePage = () => {
                                 Email
                               </p>
                               <h2 class="text-base font-semibold text-gray-800">
-                                {Data && Data.owner.email && Data.owner.email
-                                  ? Data.owner.email
-                                  : "Null"}
+                                { "sample email"}
                               </h2>
                             </div>
                           </div>
@@ -619,7 +598,7 @@ const SinglePage = () => {
                                   </thead>
                                   <tbody>
                                     {/*  */}
-                                    {Data.documents.map((doc) => (
+                                    {Mdocs.map((doc) => (
                                       <tr>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                           <p className="text-gray-900 whitespace-no-wrap">
@@ -722,9 +701,7 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data && Data.landType && Data.landType
-                                  ? Data.landType
-                                  : "Null"}
+                                 "type"
                               </p>
                             </td>
                           </tr>
@@ -747,10 +724,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyType &&
-                                Data.documentsData.propertyType
-                                  ? Data.documentsData.propertyType
+                                {
+                                mdata.propertyType &&
+                                mdata.propertyType
+                                  ? mdata.propertyType
                                   : "Null"}
                               </p>
                             </td>
@@ -774,10 +751,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.loanAmount &&
-                                Data.documentsData.loanAmount
-                                  ? Data.documentsData.loanAmount
+                                {
+                                mdata.loanAmount &&
+                                mdata.loanAmount
+                                  ? mdata.loanAmount
                                   : "Null"}
                               </p>
                             </td>
@@ -801,12 +778,12 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData
+                                {
+                                mdata.propertyData
                                   .complaincesFollowed &&
-                                Data.documentsData.propertyData
+                                mdata.propertyData
                                   .complaincesFollowed
-                                  ? Data.documentsData.propertyData
+                                  ? mdata.propertyData
                                       .complaincesFollowed
                                   : "Null"}
                               </p>
@@ -831,11 +808,11 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData
+                                {
+                                mdata.propertyData
                                   .parkingAlloted &&
-                                Data.documentsData.propertyData.parkingAlloted
-                                  ? Data.documentsData.propertyData
+                                mdata.propertyData.parkingAlloted
+                                  ? mdata.propertyData
                                       .parkingAlloted
                                   : "Null"}
                               </p>
@@ -860,10 +837,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData.towerNumber &&
-                                Data.documentsData.propertyData.towerNumber
-                                  ? Data.documentsData.propertyData.towerNumber
+                                {
+                                mdata.propertyData.towerNumber &&
+                                mdata.propertyData.towerNumber
+                                  ? mdata.propertyData.towerNumber
                                   : "Null"}
                               </p>
                             </td>
@@ -887,10 +864,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData.flatNumber &&
-                                Data.documentsData.propertyData.flatNumber
-                                  ? Data.documentsData.propertyData.flatNumber
+                                {
+                                mdata.propertyData.flatNumber &&
+                                mdata.propertyData.flatNumber
+                                  ? mdata.propertyData.flatNumber
                                   : "Null"}
                               </p>
                             </td>
@@ -914,10 +891,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData.noOfRooms &&
-                                Data.documentsData.propertyData.noOfRooms
-                                  ? Data.documentsData.propertyData.noOfRooms
+                                {
+                                mdata.propertyData.noOfRooms &&
+                                mdata.propertyData.noOfRooms
+                                  ? mdata.propertyData.noOfRooms
                                   : "Null"}
                               </p>
                             </td>
@@ -941,10 +918,10 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData.propertyData.size &&
-                                Data.documentsData.propertyData.size
-                                  ? Data.documentsData.propertyData.size
+                                {
+                                mdata.propertyData.size &&
+                                mdata.propertyData.size
+                                  ? mdata.propertyData.size
                                   : "Null"}
                               </p>
                             </td>
@@ -968,12 +945,12 @@ const SinglePage = () => {
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p class="text-gray-900 whitespace-no-wrap">
-                                {Data &&
-                                Data.documentsData
+                                {
+                                mdata
                                   .societyMaintenanceAmountPending &&
-                                Data.documentsData
+                                mdata
                                   .societyMaintenanceAmountPending
-                                  ? Data.documentsData
+                                  ? mdata
                                       .societyMaintenanceAmountPending
                                   : "Null"}
                               </p>

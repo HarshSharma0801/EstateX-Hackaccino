@@ -66,7 +66,7 @@ function App() {
     <Routes>
       {/* <Route path="/" element = {<LandingPage/>} clicked={clicked} account={Account}/> */}
       <Route path="/" element={<Login clicked={clicked} account={Account}/>} />
-      <Route path="/get" element={<MainPage account={Account} clicked={clicked} />} />
+      <Route path="/get" element={<MainPage state={state} account={Account} clicked={clicked} />} />
       {/* <Route path="/login" element={<Login />} /> */}
       {/* <Route path="/register" element={<Register />} /> */}
       <Route path="/data" element={<UserDataForm />} />
