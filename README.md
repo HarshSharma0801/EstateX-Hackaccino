@@ -88,9 +88,9 @@ Team Name - LogicLegends
 <br>
 [Swapnil Singh](https://github.com/Swapnil-Singh-99)
 <br>
-[Nitish Kumar Gupta](https://github.com/nitish12rm)
+[Yash Tiwari](https://github.com/yashArrived)
 <br>
-[Shiven](https://github.com/Nevish-302)
+[Yuvraj](https://github.com/yyuvraj54)
 <br>   
 
 ## License
