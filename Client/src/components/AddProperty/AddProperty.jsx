@@ -228,7 +228,7 @@ const AddProperty = ({ state, account, clicked }) => {
               type="submit"
               disabled={!getState}
             >
-              Make Traction{" "}
+              Make Transaction{" "}
             </button>
           </div>
         </form>
