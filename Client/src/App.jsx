@@ -11,6 +11,9 @@ import MapView from "./components/MapView/MapView";
 import ABI from "./constants/ABI";
 import contractAddress from "./constants/contractAddress";
 import { ethers } from "ethers";
+import LandingPage from "./components/pages/LandingPage/LandingPage";
+import Navbar from "./components/Navbar/Navbar";
+
 
 function App() {
   const nav = useNavigate()
@@ -58,7 +61,10 @@ function App() {
 
 
   return (
+    <>
+    {/* <Navbar/>  */}
     <Routes>
+      {/* <Route path="/" element = {<LandingPage/>} clicked={clicked} account={Account}/> */}
       <Route path="/" element={<Login clicked={clicked} account={Account}/>} />
       <Route path="/get" element={<MainPage account={Account} clicked={clicked} />} />
       {/* <Route path="/login" element={<Login />} /> */}
@@ -69,6 +75,7 @@ function App() {
       <Route path="/add" element={<AddProperty  state={state} clicked={clicked} account={Account}/>} />
       <Route path="/map" element={<MapView />} />
     </Routes>
+    </>
   );
 }
 

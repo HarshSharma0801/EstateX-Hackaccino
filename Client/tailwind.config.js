@@ -4,8 +4,13 @@ export default {
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
+    darkMode: false,
     theme: {
-        extend: {},
-    },
+        extend: {
+          backgroundImage: {
+            'main-bg': "url('/src/assets/bg.svg')",
+          }
+        },
+      },
     plugins: [],
 }
