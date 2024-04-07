@@ -17,6 +17,7 @@ import {
 const DisplayCard = ({state}) => {
   const [memos,setMemos]=useState([]);
 
+  // window.location.reload();
 
   useEffect(()=>{
       const memosMessage = async()=>{
@@ -31,8 +32,7 @@ const DisplayCard = ({state}) => {
 
   return (
     <>
-      <div className="flex gap-20">
-        <SidePanel />
+      <div className="grid grid-cols-3 p-4 px-7 gap-20">
        {memos.length > 0 && memos.map((data,index)=>{
         return <>
           <Card className="w-full max-w-[26rem] shadow-lg mt-5 h-fit pb-5 min-h-[615px]">
