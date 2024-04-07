@@ -88,9 +88,11 @@ Team Name - LogicLegends
 <br>
 [Swapnil Singh](https://github.com/Swapnil-Singh-99)
 <br>
+[Yuvraj](https://github.com/yyuvraj54)
+<br>
 [Yash Tiwari](https://github.com/yashArrived)
 <br>
-[Yuvraj](https://github.com/yyuvraj54)
+[Aryan Kushwaha](https://github.com/funinkina)
 <br>   
 
 ## License
