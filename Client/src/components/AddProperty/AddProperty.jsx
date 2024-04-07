@@ -76,7 +76,7 @@ const AddProperty = ({ state, account, clicked }) => {
     const transaction = await getState.contract.ListProp(name,Address,Number,Price,email,Description,Type,amount)
     await transaction.wait();
     alert("Transaction is successul");
-    nav('/get');
+    nav('/');
   }
 
 
