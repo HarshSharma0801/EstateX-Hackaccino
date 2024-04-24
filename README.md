@@ -1,6 +1,6 @@
-# PropertyHub
+# EstateX
 
-**PropertyHub** is a pioneering solution designed to tackle the following issues in real estate transactions:
+**EstateX** is a pioneering solution designed to tackle the following issues in real estate transactions:
 
 1. **Insufficient Knowledge About Property Documents**: Many individuals lack the necessary expertise to comprehend property documentation adequately.
 
@@ -14,9 +14,9 @@
 
 In response to these challenges, we have created a comprehensive solution that leverages React for the web interface and Solidity for blockchain integration. Our platform seamlessly integrates with blockchain wallets, streamlining property data transactions. After the submission of extensive property documentation and details, our system initiates a meticulous property verification process. This approach ensures a one-time property verification, thereby enabling real-time tracking capabilities for all stakeholders.
 
-**Dealing with Power of Attorney**: PropertyHub simplifies the process of handling Power of Attorney documents by securely storing and managing them within the blockchain. This reduces the complexities associated with these documents, streamlining property transactions.
+**Dealing with Power of Attorney**: EstateX simplifies the process of handling Power of Attorney documents by securely storing and managing them within the blockchain. This reduces the complexities associated with these documents, streamlining property transactions.
 
-**Efficient Land Tax Management**: The platform includes a feature to accurately calculate and manage land taxes. By automating this process and ensuring compliance with tax regulations, PropertyHub helps users avoid potential tax-related issues.
+**Efficient Land Tax Management**: The platform includes a feature to accurately calculate and manage land taxes. By automating this process and ensuring compliance with tax regulations, EstateX helps users avoid potential tax-related issues.
 
 ## Powerpoint Presentation Link
 
@@ -28,7 +28,7 @@ https://www.youtube.com/watch?v=jdGckSiiJCE
 
 ## Live Demo Link
 
-https://propertyhub.vercel.app/
+https://EstateX.vercel.app/
 
 
 ## Table of Contents
